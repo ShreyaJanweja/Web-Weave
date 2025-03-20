@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Center</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+        .image-section {
+            flex: 1;
+            background: url('your-image-url.jpg') center/cover no-repeat;
+        }
+        .text-section {
+            flex: 1;
+            background: #c49a6c;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 50px;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .text-section p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        .buttons {
+            display: flex;
+            gap: 20px;
+        }
+        .btn {
+            width: 50px;
+            height: 50px;
+            border: 2px solid white;
+            background: transparent;
+            border-radius: 50%;
+            cursor: pointer;
+            color: white;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image-section" id="imageSection"></div>
+        <div class="text-section">
+            <h1 id="title">BUILDING FEATURES</h1>
+            <h3 id="subtitle">24 HOUR FITNESS</h3>
+            <p id="description">Our 24-hour fitness center is right at your doorstep! Get fit, stay healthy, and enjoy the convenience of working out whenever you want. Your dream apartment community just got even better!</p>
+            <div class="buttons">
+                <button class="btn" onclick="prevSlide()">&#8592;</button>
+                <button class="btn" onclick="nextSlide()">&#8594;</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        const slides = [
+            {
+                image: 'your-image-url.jpg',
+                title: 'BUILDING FEATURES',
+                subtitle: 'DOG PARK',
+                description: 'Our pet-friendly apartment community features a fantastic dog park where tour furry friends can run wild and make new pals!'
+            },
+            {
+                image: 'your-second-image.jpg',
+                title: 'BUILDING FEATURES',
+                subtitle: 'GATED COMMUNTIY',
+                description: 'Experience the epitome of luxury living in our exclusive gated aparartment community. With unparalleled security and thoughtfully designed spaces, your comfort and peace of mind are our top priorities.'
+            },
+            {
+                image: 'your-third-image.jpg',
+                title: 'BUILDING FEATURES',
+                subtitle: 'FIRE PIT LOUNGES',
+                description: 'Unwind and connect under the stars at our apartment community inviting fire pit lounges. Enjoy cozy evenings filled with warmth and camaraderie creating cherished memories with friends and neighbors.'
+            },
+        ];
+        let currentSlide = 0;
+        function updateSlide() {
+            document.getElementById('imageSection').style.backgroundImage = url(${slides[currentSlide].image});
+            document.getElementById('title').innerText = slides[currentSlide].title;
+            document.getElementById('subtitle').innerText = slides[currentSlide].subtitle;
+            document.getElementById('description').innerText = slides[currentSlide].description;
+        }
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            updateSlide();
+        }
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateSlide();
+        }
+        updateSlide();
+    </script>
+</body>
+</html>
